@@ -1,6 +1,6 @@
 {
   "name": "unbox",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Get or set values on an object from an array of keys.",
   "main": "index.js",
   "scripts": {
