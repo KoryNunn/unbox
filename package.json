@@ -1,19 +1,22 @@
 {
   "name": "unbox",
   "version": "1.0.0",
-  "description": "",
+  "description": "Get or set values on an object from an array of keys.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node tests"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KoryNunn/unbox.git"
+    "url": "https://github.com/KoryNunn/unbox.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/KoryNunn/unbox/issues"
   },
-  "homepage": "https://github.com/KoryNunn/unbox#readme"
+  "homepage": "https://github.com/KoryNunn/unbox#readme",
+  "devDependencies": {
+    "tape": "^4.2.0"
+  }
 }

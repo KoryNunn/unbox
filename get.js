@@ -1,8 +1,6 @@
-module.exports = function set(reference, pathParts, value) {
+module.exports = function get(reference, pathParts) {
     var index = 0,
         pathLength = pathParts.length;
-
-    var result = reference;
 
     for(; index < pathLength; index++){
         var key = pathParts[index];
@@ -17,7 +15,7 @@ module.exports = function set(reference, pathParts, value) {
                 return;
             }
 
-            reference = reference[key];
+            return reference[key];
         }
     }
 };
