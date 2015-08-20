@@ -2,9 +2,10 @@
 
 Get or set values on an object from an array of keys.
 
-# Usage
+## Usage
 
-##get(object, pathArray)
+### get(object, pathArray)
+
 ```javascript
 var get = require('unbox/get');
 
@@ -17,12 +18,15 @@ var myObject = {
 value = get(myObject, ['a', 'b']); // 1
 ```
 
-##set(object, pathArray, value)
+
+### set(object, pathArray, value)
+
 ```javascript
 var set = require('unbox/set');
 
 set(myObject, ['a', 'b', 'c'], 2);
 ```
+
 myObject will now be:
 
 ```javascript
