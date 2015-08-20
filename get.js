@@ -1,4 +1,8 @@
 module.exports = function get(reference, pathParts) {
+    if(typeof pathParts === 'string'){
+        pathParts = pathParts.split('.');
+    }
+
     var index = 0,
         pathLength = pathParts.length;
 
@@ -7,7 +11,7 @@ module.exports = function get(reference, pathParts) {
 
         if (reference == null) {
             break;
-        } else if (typeof reference[key] === "object") {
+        } else if (typeof reference[key] === 'object') {
             reference = reference[key];
         } else {
 

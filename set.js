@@ -1,8 +1,11 @@
 module.exports = function set(reference, pathParts, value) {
-    var index = 0,
-        pathLength = pathParts.length;
+    if(typeof pathParts === 'string'){
+        pathParts = pathParts.split('.');
+    }
 
-    var result = reference,
+    var index = 0,
+        pathLength = pathParts.length,
+        result = reference,
         previousresult,
         previousKey;
 

@@ -20,12 +20,14 @@ function testSet(path, testObject, expectedObject, value) {
 var getTestData = [
     [['a'], {a:1}, 1],
     [['a', 'b'], {a:{b:1}}, 1],
+    ['a.b', {a:{b:1}}, 1],
     [['a', 'b'], {}, undefined]
 ];
 
 var setTestData = [
     [['a'], {a:1}, {a:2}, 2],
     [['a', 'b'], {a:{b:1}}, {a:{b:2}}, 2],
+    ['a.b', {a:{b:1}}, {a:{b:2}}, 2],
     [['a', 'b', 'c'], {a:{b:null}}, {a:{b:{c:1}}}, 1],
     [['a', 'b'], {a:{b:null}}, {a:{b:{c:1}}}, {c:1}],
     [['a', 'b', 'c'], {a:{b:1}}, {a:{b:{c:2}}}, 2],
