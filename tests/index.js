@@ -5,7 +5,7 @@ var test = require('tape'),
 function testGet(path, testObject, expectedValue) {
     test(path, function(t) {
         t.plan(1);
-        t.equal(get(testObject, path), expectedValue, 'Got correct value');
+        t.deepEqual(get(testObject, path), expectedValue, 'Got correct value');
     });
 }
 
@@ -21,7 +21,8 @@ var getTestData = [
     [['a'], {a:1}, 1],
     [['a', 'b'], {a:{b:1}}, 1],
     ['a.b', {a:{b:1}}, 1],
-    [['a', 'b'], {}, undefined]
+    [['a', 'b'], {}, undefined],
+    ['a.b', {a:{b:{c:1}}}, {c:1}]
 ];
 
 var setTestData = [

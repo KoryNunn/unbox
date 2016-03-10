@@ -11,7 +11,10 @@ module.exports = function get(reference, pathParts) {
 
         if (reference == null) {
             break;
-        } else if (typeof reference[key] === 'object') {
+        } else if (
+            typeof reference[key] === 'object' &&
+            index !== pathLength - 1
+        ) {
             reference = reference[key];
         } else {
 
