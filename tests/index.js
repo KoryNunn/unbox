@@ -22,7 +22,8 @@ var getTestData = [
     [['a', 'b'], {a:{b:1}}, 1],
     ['a.b', {a:{b:1}}, 1],
     [['a', 'b'], {}, undefined],
-    ['a.b', {a:{b:{c:1}}}, {c:1}]
+    ['a.b', {a:{b:{c:1}}}, {c:1}],
+    [['a', Symbol.for('b')], {a:{[Symbol.for('b')]:{c:1}}}, {c:1}],
 ];
 
 var setTestData = [
@@ -32,7 +33,8 @@ var setTestData = [
     [['a', 'b', 'c'], {a:{b:null}}, {a:{b:{c:1}}}, 1],
     [['a', 'b'], {a:{b:null}}, {a:{b:{c:1}}}, {c:1}],
     [['a', 'b', 'c'], {a:{b:1}}, {a:{b:{c:2}}}, 2],
-    [['a', 'b', 'c'], {}, {a:{b:{c:1}}}, 1]
+    [['a', 'b', 'c'], {}, {a:{b:{c:1}}}, 1],
+    [['a', Symbol.for('b')], {}, { a: { [Symbol.for('b')]: 1 }}, 1],
 ];
 
 getTestData.forEach(function(data){
