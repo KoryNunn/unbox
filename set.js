@@ -13,7 +13,7 @@ module.exports = function set(reference, pathParts, value) {
         var key = pathParts[index];
 
         if ((typeof result !== 'object' || result === null) && index < pathLength) {
-            if (!isNaN(key)) {
+            if (!Number.isNaN(key)) {
                 result = previousresult[previousKey] = [];
             }
             else {
