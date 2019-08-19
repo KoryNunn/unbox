@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/KoryNunn/unbox#readme",
   "devDependencies": {
+    "deep-strict-equal": "^0.2.0",
     "tape": "^4.2.0"
   }
 }
