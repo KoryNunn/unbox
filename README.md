@@ -4,6 +4,24 @@ Get or set values on an object from an array of keys.
 
 ## Usage
 
+### has(object, pathArray/dotNotation)
+
+```javascript
+var has = require('unbox/has');
+
+var myObject = {
+    a: {
+        b: 1
+    }
+};
+
+has(myObject, 'a.b'); // true
+// OR
+has(myObject, ['a', 'b']); // true
+
+has(myObject, 'a.b.c'); // false
+```
+
 ### get(object, pathArray/dotNotation)
 
 ```javascript
@@ -15,9 +33,9 @@ var myObject = {
     }
 };
 
-value = get(myObject, 'a.b'); // 1
+get(myObject, 'a.b'); // 1
 // OR
-value = get(myObject, ['a', 'b']); // 1
+get(myObject, ['a', 'b']); // 1
 ```
 
 

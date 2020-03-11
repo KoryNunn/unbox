@@ -1,22 +1,41 @@
 var test = require('tape'),
+    has = require('../has'),
     get = require('../get'),
     set = require('../set');
     deepStrictEqual = require('deep-strict-equal');
 
-function testGet(path, testObject, expectedValue) {
-    test(path, function(t) {
+function testHas(path, testObject, expectedValue) {
+    test('has ' + JSON.stringify(path) + ' in ' + JSON.stringify(testObject), function(t) {
         t.plan(1);
-        t.ok(deepStrictEqual(get(testObject, path), expectedValue), 'Got correct value');
+        var result = has(testObject, path);
+        t.ok(deepStrictEqual(result, expectedValue), 'Got correct value ' + result);
+    });
+}
+
+function testGet(path, testObject, expectedValue) {
+    test('get ' + JSON.stringify(path) + ' in ' + JSON.stringify(testObject), function(t) {
+        t.plan(1);
+        var result = get(testObject, path);
+        t.ok(deepStrictEqual(result, expectedValue), 'Got correct value ' + result);
     });
 }
 
 function testSet(path, testObject, expectedObject, value) {
-    test(path, function(t) {
+    test('set ' + JSON.stringify(path) + ' in ' + JSON.stringify(testObject), function(t) {
         t.plan(1);
         set(testObject, path, value);
         t.ok(deepStrictEqual(testObject, expectedObject), 'Value set correctly');
     });
 }
+
+var hasTestData = [
+    [['a'], {a:1}, true],
+    [['a', 'b'], {a:{b:1}}, true],
+    ['a.b', {a:{b:1}}, true],
+    [['a', 'b'], {}, false],
+    ['a.b', {a:{b:{c:1}}}, true],
+    [['a', Symbol.for('b')], {a:{[Symbol.for('b')]:{c:1}}}, true]
+];
 
 var getTestData = [
     [['a'], {a:1}, 1],
@@ -24,7 +43,7 @@ var getTestData = [
     ['a.b', {a:{b:1}}, 1],
     [['a', 'b'], {}, undefined],
     ['a.b', {a:{b:{c:1}}}, {c:1}],
-    [['a', Symbol.for('b')], {a:{[Symbol.for('b')]:{c:1}}}, {c:1}],
+    [['a', Symbol.for('b')], {a:{[Symbol.for('b')]:{c:1}}}, {c:1}]
 ];
 
 var setTestData = [
@@ -36,8 +55,12 @@ var setTestData = [
     [['a', 'b', 'c'], {a:{b:1}}, {a:{b:{c:2}}}, 2],
     [['a', 'b', 'c'], {}, {a:{b:{c:1}}}, 1],
     [['a', 'b', 'c'], { a: { b: 1 } }, {a:{b:{c:1}}}, 1],
-    [['a', Symbol.for('b')], {}, { a: { [Symbol.for('b')]: 1 }}, 1],
+    [['a', Symbol.for('b')], {}, { a: { [Symbol.for('b')]: 1 }}, 1]
 ];
+
+hasTestData.forEach(function(data){
+    testHas.apply(null, data);
+});
 
 getTestData.forEach(function(data){
     testGet.apply(null, data);
