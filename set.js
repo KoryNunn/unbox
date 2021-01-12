@@ -4,10 +4,10 @@ module.exports = function set(reference, pathParts, value) {
     }
 
     var index = 0,
-    pathLength = pathParts.length,
-    result = reference,
-    previousresult,
-    previousKey;
+        pathLength = pathParts.length,
+        result = reference,
+        previousresult,
+        previousKey;
 
     for(; index < pathLength; index++){
         var key = pathParts[index];
