@@ -24,9 +24,14 @@ module.exports = function set(reference, pathParts, value) {
             result[key] = value;
         }
         else {
+            if (isPrototypePolluted(key)) continue;
             previousresult = result;
             previousKey = key;
             result = result[key];
         }
     }
 };
+
+function isPrototypePolluted(key) {
+    return ['__proto__', 'constructor', 'prototype'].includes(key);
+}
